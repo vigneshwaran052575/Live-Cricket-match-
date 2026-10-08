@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        CricketLive - Live Cricket Scores
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="logo">
+        🏏 Cricket<span>Live</span>
+    </div>
+
+
+    <nav id="navbar">
+
+        <a href="#live">
+            Live
+        </a>
+
+        <a href="#upcoming">
+            Upcoming
+        </a>
+
+        <a href="#series">
+            Series
+        </a>
+
+        <a href="#watch">
+            Watch
+        </a>
+
+    </nav>
+
+
+    <button
+        class="menu-btn"
+        onclick="toggleMenu()">
+
+        ☰
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="live-badge">
+
+            <span></span>
+
+            LIVE CRICKET
+
+        </div>
+
+
+        <h1>
+
+            All Cricket Updates
+            <br>
+
+            in One Place
+
+        </h1>
+
+
+        <p>
+
+            Live scores, match schedules,
+            scorecards and official streaming
+            information in one place.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="scrollToLive()">
+
+                View Live Matches
+
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="scrollToWatch()">
+
+                📺 Where to Watch
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HERO SCORE -->
+
+    <div class="hero-score">
+
+        <div class="mini-header">
+
+            <span>
+                🔴 LIVE
+            </span>
+
+            <span>
+                International Match
+            </span>
+
+        </div>
+
+
+        <div class="teams">
+
+            <div class="team">
+
+                <div class="flag">
+                    🇮🇳
+                </div>
+
+                <strong>
+                    India
+                </strong>
+
+                <b id="heroIndiaScore">
+                    186/4
+                </b>
+
+                <small>
+                    18.2 overs
+                </small>
+
+            </div>
+
+
+            <div class="vs">
+                VS
+            </div>
+
+
+            <div class="team">
+
+                <div class="flag">
+                    🇦🇺
+                </div>
+
+                <strong>
+                    Australia
+                </strong>
+
+                <b>
+                    Yet to bat
+                </b>
+
+            </div>
+
+        </div>
+
+
+        <div class="match-status">
+
+            India need 34 runs from 10 balls
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<!-- LIVE MATCHES -->
+
+<section
+    id="live"
+    class="section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                LIVE NOW
+            </span>
+
+            <h2>
+                Live Matches
+            </h2>
+
+        </div>
+
+
+        <button
+            class="refresh-btn"
+            onclick="refreshMatches()">
+
+            ↻ Refresh
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="liveMatches"
+        class="match-grid">
+
+    </div>
+
+</section>
+
+
+
+<!-- UPCOMING -->
+
+<section
+    id="upcoming"
+    class="section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                SCHEDULE
+            </span>
+
+            <h2>
+                Upcoming Matches
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="upcomingMatches"
+        class="match-grid">
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     OFFICIAL STREAMING
+========================= -->
+
+<section
+    id="watch"
+    class="section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                OFFICIAL STREAMING
+            </span>
+
+            <h2>
+                Where to Watch
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <p class="section-description">
+
+        Select an official broadcaster or streaming
+        service. Availability depends on the match,
+        tournament and your country.
+
+    </p>
+
+
+    <div
+        id="ottList"
+        class="ott-grid">
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     TOURNAMENTS
+========================= -->
+
+<section
+    id="series"
+    class="section">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                TOURNAMENTS
+            </span>
+
+            <h2>
+                Popular Series
+            </h2>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="series-grid">
+
+
+        <!-- ICC -->
+
+        <div
+            class="series-card"
+            onclick="showTournament('ICC')">
+
+            <div class="series-icon">
+                🏆
+            </div>
+
+            <div>
+
+                <h3>
+                    ICC Cricket Series
+                </h3>
+
+                <p>
+                    International cricket
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INDIA -->
+
+        <div
+            class="series-card"
+            onclick="showTournament('INDIA')">
+
+            <div class="series-icon">
+                🇮🇳
+            </div>
+
+            <div>
+
+                <h3>
+                    India Tour
+                </h3>
+
+                <p>
+                    India international matches
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- T20 -->
+
+        <div
+            class="series-card"
+            onclick="showTournament('T20')">
+
+            <div class="series-icon">
+                🔥
+            </div>
+
+            <div>
+
+                <h3>
+                    T20 League
+                </h3>
+
+                <p>
+                    Domestic T20 cricket
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WORLD -->
+
+        <div
+            class="series-card"
+            onclick="showTournament('WORLD')">
+
+            <div class="series-icon">
+                🌎
+            </div>
+
+            <div>
+
+                <h3>
+                    World Cricket
+                </h3>
+
+                <p>
+                    International matches
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Tournament Matches -->
+
+    <div
+        id="tournamentMatches"
+        class="tournament-results">
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🏏 CricketLive
+    </div>
+
+    <p>
+        Live scores and official streaming information.
+    </p>
+
+    <p class="copyright">
+        © 2026 CricketLive Demo
+    </p>
+
+</footer>
+
+
+
+<script
+    src="script.js">
+</script>
+
+
+</body>
+
+</html>
